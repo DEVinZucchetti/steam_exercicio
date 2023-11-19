@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class ProductController extends Controller
 {
@@ -48,7 +49,10 @@ class ProductController extends Controller
             if(!$product) return response()->json(['message' => 'Produto não encontrado'], 404);
 
             $request->validate([
-                'name' => 'required|unique:products|string|max:150'
+                'name' => [
+                    'required',
+                    Rule::unique('products')->ignore($product->id),
+                ]
             ]);
 
             $product->update($request->all());
