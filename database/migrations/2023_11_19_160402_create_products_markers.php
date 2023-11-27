@@ -22,7 +22,8 @@ return new class extends Migration
             $table
             ->foreign('marker_id')
             ->references('id')
-            ->on('markers');
+            ->on('markers')
+            ->onDelete('cascade');
             $table->timestamps();
         });
     }

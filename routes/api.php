@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AchievementController;
+use App\Http\Controllers\AssetController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MarkerController;
 use App\Http\Controllers\ProductController;
@@ -31,3 +32,9 @@ Route::post('markers', [MarkerController::class, 'store']);
 
 Route::get('product_markers', [ProductMarkerController::class, 'index']);
 Route::post('product_markers', [ProductMarkerController::class, 'store']);
+
+Route::get('assets', [AssetController::class, 'index']);
+Route::post('assets', [AssetController::class, 'store']);
+Route::get('assets/{id}', [AssetController::class, 'show']);
+Route::delete('assets/{id}', [AssetController::class, 'destroy']);
+Route::put('assets/{id}', [AssetController::class, 'update']);

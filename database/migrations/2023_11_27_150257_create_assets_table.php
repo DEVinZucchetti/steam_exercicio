@@ -11,20 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('products_requirements', function (Blueprint $table) {
+        Schema::create('assets', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('product_id');
-            $table->text('operational_system');
-            $table->text('memory');
-            $table->text('storage');
-            $table->text('observations');
-            $table->enum('type', ['MINIMUNS', 'RECOMMENDED']);
+            $table->string('name', 150)->unique();
+            $table->string('url', 250);
+            $table->enum('type', ['IMAGE', 'VIDEO']);
+            $table->timestamps();
             $table
             ->foreign('product_id')
             ->references('id')
             ->on('products')
             ->onDelete('cascade');
-            $table->timestamps();
         });
     }
 
@@ -33,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('products_requirements');
+        Schema::dropIfExists('achievements');
     }
 };
