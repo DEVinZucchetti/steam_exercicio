@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\SendEmailWithGamesToUsers;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -10,9 +11,17 @@ class Kernel extends ConsoleKernel
     /**
      * Define the application's command schedule.
      */
+     protected $commands = [
+        SendEmailWithGamesToUsers::class
+    ];
+
     protected function schedule(Schedule $schedule): void
     {
         // $schedule->command('inspire')->hourly();
+
+        $schedule->command('app:send-email-with-games-to-users')
+        ->timezone('America/Sao_Paulo')
+        ->at('08:00');
     }
 
     /**
