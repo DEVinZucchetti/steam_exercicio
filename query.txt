@@ -1,0 +1,6 @@
+select p.id as game_id, p.name, p.price, m.name from products p
+join products_markers pm ON pm.product_id = p.id
+join markers m on m.id  = pm.marker_id
+where
+	price between 30 and 300
+	and m.name = 'terror'
