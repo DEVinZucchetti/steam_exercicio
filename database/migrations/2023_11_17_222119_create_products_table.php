@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name', 150)->unique();
             $table->decimal('price', 10, 2)->default(0);
             $table->text('description')->nullable();
-            $table->string('cover')->nullable();
+            $table->text('cover')->nullable();
             $table->timestamps();
         });
     }
